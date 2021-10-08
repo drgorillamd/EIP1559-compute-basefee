@@ -5,12 +5,12 @@ async function baseFeeTheo (provider)  {
     const BASE_FEE_MAX_CHANGE_DENOMINATOR = 8;
     const ELASTICITY_MULTIPLIER = 2;
     try {
-            const __ = await provider.getBlock(provider.blockNumber);
+            const __ = await provider.getBlock(provider.blockNumber); //refresh the blockNumber, return -1 if not done
             const newBlock = provider.blockNumber;
             const content = await provider.getBlock(newBlock);
 
             const parent_gas_target = Math.floor(content.gasLimit / ELASTICITY_MULTIPLIER);
-            const parent_gas_used = Math.floor(content.gasUsed);
+            const parent_gas_used = Math.floor(content.gasUsed);  //BN are overrated
             const parent_gas_basefee = Math.floor(content.baseFeePerGas);
 
             if(parent_gas_target == parent_gas_used) return [newBlock+1, ethers.BigNumber.from(parent_gas_basefee)];
@@ -39,7 +39,7 @@ module.exports = baseFeeTheo;
 
     /*
 
-        EIP 1559 :
+        original Go of EIP 1559 :
         '//' is integer division round down
 
         BASE_FEE_MAX_CHANGE_DENOMINATOR = 8;
