@@ -4,8 +4,8 @@ JS implementation of the calculation of expected_base_fee_per_gas in EIP-1559 (h
 
 # Usage
 
-const baseFeeTheo = require('./baseFeeTheo.js')
-const ethers = require('ethers');
+    const baseFeeTheo = require('./baseFeeTheo.js')
+    const ethers = require('ethers');
 
-const provider = new ethers.providers.getDefaultProvider();
-const [block, estim] = await baseFeeTheo(provider);
+    const provider = new ethers.providers.getDefaultProvider();
+    const [block, estim] = await baseFeeTheo(provider);
