@@ -1,5 +1,4 @@
 const ethers = require('ethers');
-const fs = require('fs');
 
 async function baseFeeTheo (provider)  {
     const BASE_FEE_MAX_CHANGE_DENOMINATOR = 8;
